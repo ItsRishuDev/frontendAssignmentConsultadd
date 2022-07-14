@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span>Currency Converter</span>
+</mat-toolbar>
+<div class="mainDiv">
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input type="number" matInput placeholder="Ex. 100" [(ngModel)]="amount" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill" >
+      <mat-label>Currency</mat-label>
+      <mat-select [(ngModel)]="choice" [ngModelOptions]="{standalone: true}">
+        <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+          {{currency.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" (click)="convert()">Submit</button>
+  </form>
+</div>
+
+<app-converter *ngIf="showResult" [convertedResult]="finalResult"></app-converter>
